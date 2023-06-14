@@ -26,15 +26,14 @@ python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --nu
 
 
 ### evaluation
-请注意，端到端的裁剪和超分辨率操作只支持推理过程，所以若想增强数据集，请先按照 dataset augmentation 中的流程运行 crop_dataset.py 和 sr_dataset.py。 
-为了评估模型的性能，有三种模式对应于三种不同的裁剪策略： NoCrop, UniformlyCrop, SelfAdaptiveCrop。
+请注意，端到端的裁剪和超分辨率操作只支持推理过程，所以若想增强数据集，请先按照 dataset augmentation 中的流程运行 crop_dataset.py 和 sr_dataset.py。为了评估模型的性能，有三种模式对应于三种不同的裁剪策略： NoCrop, UniformlyCrop, SelfAdaptiveCrop。  
 你可以运行以下代码来切换裁剪策略：
 ```python
 python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8
 python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8 GLSAN.CROP UniformlyCrop
 python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8 GLSAN.CROP SelfAdaptiveCrop
 ```
-要在推理时添加超分辨率操作，请运行：
+要在推理时添加超分辨率操作，请运行：  
 ```python
 python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8 GLSAN.CROP SelfAdaptiveCrop GLSAN.SR True
 ```
