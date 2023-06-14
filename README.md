@@ -41,6 +41,7 @@ However, please note that end-to-end cropping and super-resolution operations ar
 
 You can run following codes to switch the cropping strategy:
 ```python
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth
 python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8
 python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8 GLSAN.CROP UniformlyCrop
 python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8 GLSAN.CROP SelfAdaptiveCrop
