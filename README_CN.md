@@ -15,9 +15,7 @@ python tools/crop_dataset.py
 python tools/sr_dataset.py
 ```
 ### pretrained models
-我们网络的预训练模型可以在以下网站下载 [Detectron2.model_zoo](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md)。
-你也可以通过点击 [R-50.pkl](https://dl.fbaipublicfiles.com/detectron2/ImageNetPretrained/MSRA/R-50.pkl) 或者 [R-101.pkl](https://dl.fbaipublicfiles.com/detectron2/ImageNetPretrained/MSRA/R-101.pkl) 来直接下载到你 'home' 目录下的 '.torch/iopath_cache/detectron2/ImageNetPretrained/MSRA/' 。
-或者它们将在训练时自动下载到指定位置。
+我们网络的预训练模型可以在以下网站下载 [Detectron2.model_zoo](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md)。你也可以通过点击 [R-50.pkl](https://dl.fbaipublicfiles.com/detectron2/ImageNetPretrained/MSRA/R-50.pkl) 或者 [R-101.pkl](https://dl.fbaipublicfiles.com/detectron2/ImageNetPretrained/MSRA/R-101.pkl) 来直接下载到你 'home' 目录下的 '.torch/iopath_cache/detectron2/ImageNetPretrained/MSRA/' 。或者它们将在训练时自动下载到指定位置。
 ### training
 我们提供了 "train_net.py" 来训练神经网络。在训练前需要按自己需求修改项目目录下 '/glsan/data/datasets/builtin.py' 和 './configs/xxx.yaml' 文件。
 使用 "train_net.py" 来训练模型，首先按照 [Detectron2.datasets](https://github.com/facebookresearch/detectron2/blob/master/datasets/README.md) 来设置相应的数据集，
