@@ -1,5 +1,5 @@
 # GLSAN
-GLSAN is a network for drone-view small object detection.
+GLSAN is a network for drone-view small object detection. This version is derived from dengsutao/glsan and fixes some bugs.
 ## Installation
 Our source codes are mainly based on [Detectron2](https://github.com/facebookresearch/detectron2), see [Detectron2.installation](https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md).
 ## Get Started
