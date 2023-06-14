@@ -1,4 +1,5 @@
 # GLSAN
+For Chinese: [README_CN.md]
 GLSAN is a network for drone-view small object detection. This version is derived from dengsutao/glsan and fixes some bugs.
 ## Installation
 Our source codes are mainly based on [Detectron2](https://github.com/facebookresearch/detectron2), see [Detectron2.installation](https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md).
@@ -35,6 +36,7 @@ python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --nu
 
 
 ### evaluation
+However, please note that end-to-end cropping and super-resolution operations are only supported for the inference process, so please run crop_dataset.py and sr_dataset.py first for training. 
 To evaluate a model's performance, there are threee modes corresponding to three different
 cropping strategies: NoCrop, UniformlyCrop, SelfAdaptiveCrop.
 You can run following codes to switch the cropping strategy:
