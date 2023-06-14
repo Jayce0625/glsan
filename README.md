@@ -11,7 +11,7 @@ To train the VisDrone and UAVDT dataset, you need transform them to coco format.
 We provide './tools/txt2xml_\*.py' and './tools/xml2json_\*.py' to generate json files in coco format.
 ### dataset augmentation
 The network in our paper is trained with the augmented datasets.
-We provide './tools/crop_dataset.py' and './tools/sr_dataset.py' to conduct SARSA and LSRN to the original datasets.
+We provide './tools/crop_dataset.py' and './tools/sr_dataset.py' to conduct SARSA and LSRN to the original datasets. The file '. /tools/sr_dataset.py' fixes many bugs in the original author's code, including index count exceptions, wrong self-call, wrong image index, an extra illegal field in the cfg file, etc. Please run the following code in the project root directory (you need to modify the code according to your needs):
 ### pretrained models
 The pretrained models of our network can be downloaded at [Detectron2.model_zoo](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md).
 You can directly download [R-50.pkl](https://dl.fbaipublicfiles.com/detectron2/ImageNetPretrained/MSRA/R-50.pkl) or [R-101.pkl](https://dl.fbaipublicfiles.com/detectron2/ImageNetPretrained/MSRA/R-101.pkl)
