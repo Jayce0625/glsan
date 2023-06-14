@@ -1,11 +1,11 @@
 # GLSAN
 GLSAN 是一个用于无人机视觉微小目标检测的网络。这个版本源于 dengsutao/glsan，并修正了一些错误。
-## 安装等准备工作
-Our source codes are mainly based on [Detectron2](https://github.com/facebookresearch/detectron2), see [Detectron2.installation](https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md).
+## Installation
+我们的源代码主要是基于 [Detectron2](https://github.com/facebookresearch/detectron2), 请查看 [Detectron2.installation](https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md).
 ## Get Started
-我们的源代码主要是基于 [Detectron2](https://github.com/facebookresearch/detectron2), 请参考 [Detectron2.Getting_started](https://github.com/facebookresearch/detectron2/blob/master/GETTING_STARTED.md).
+关于初始化 [Detectron2](https://github.com/facebookresearch/detectron2), 请参考 [Detectron2.Getting_started](https://github.com/facebookresearch/detectron2/blob/master/GETTING_STARTED.md).
 ### dataset transformation
-To train the VisDrone and UAVDT dataset, you need transform them to coco format.
+如果准备训练 VisDrone 和 UAVDT 数据集，你需要首先把它们转换为 COCO 格式.
 We provide './tools/txt2xml_\*.py' and './tools/xml2json_\*.py' to generate json files in coco format.
 ### dataset augmentation
 The network in our paper is trained with the augmented datasets.
