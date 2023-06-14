@@ -23,6 +23,7 @@ to '.torch/fvcore_cache/detectron2/ImageNetPretrained/MSRA/' of your 'home' dire
 Or they will be downloaded automatically when training.
 ### training
 We provide "train_net.py" for network training.
+Before training, you need to modify the project directory '/glsan/data/datasets/builtin.py' and '. /configs/xxx.yaml' files.
 To train a model with "train_net.py", first setup the corresponding datasets following [Detectron2.datasets](https://github.com/facebookresearch/detectron2/blob/master/datasets/README.md),
 you need to put the transformed or augmented datasets into './datasets' directory.
 The settings of VisDrone and UAVDT can be found in './glsan/data/datasets'.
