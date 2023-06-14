@@ -28,13 +28,8 @@ To train a model with "train_net.py", first setup the corresponding datasets fol
 you need to put the transformed or augmented datasets into './datasets' directory.
 The settings of VisDrone and UAVDT can be found in './glsan/data/datasets'.
 
-To train with 8 GPUs, run:
-```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --num-gpus 8
-```
 
-
-To train with 1 GPU, run:
+The current code does not support multi-GPU training, to train with 1 GPU, run:
 ```python
 python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --num-gpus 1 SOLVER.IMS_PER_BATCH 2
 ```
