@@ -37,7 +37,7 @@ python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yam
 ```
 要在推理时添加超分辨率操作，请运行：  
 ```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth --num-gpus 8 GLSAN.CROP SelfAdaptiveCrop GLSAN.SR True
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP SelfAdaptiveCrop GLSAN.SR True
 ```
 
 要获得我们方法的更多参数，请详见 './glsan/config/defaults.py' 和 './glsan/modeling/meta_arch/glsan.py'。
