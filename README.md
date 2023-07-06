@@ -13,8 +13,8 @@ We provide './tools/txt2xml_\*.py' and './tools/xml2json_\*.py' to generate json
 The network in our paper is trained with the augmented datasets.
 We provide './tools/crop_dataset.py' and './tools/sr_dataset.py' to conduct SARSA and LSRN to the original datasets. The file '. /tools/sr_dataset.py' fixes many bugs in the original author's code, including index count exceptions, wrong self-call, wrong image index, an extra illegal field in the cfg file, etc. Please run the following code in the project root directory (you need to modify the code according to your needs):
 ```python
-python tools/crop_dataset.py
-python tools/sr_dataset.py
+python tools/crop_dataset.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml
+python tools/sr_dataset.py --config-file ./configs/faster_rcnn_res50_visdroneplus.yaml
 ```
 ### pretrained models
 The pretrained models of our network can be downloaded at [Detectron2.model_zoo](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md).
@@ -31,7 +31,7 @@ The settings of VisDrone and UAVDT can be found in './glsan/data/datasets'.
 
 The current code does not support multi-GPU training, to train with 1 GPU, run:
 ```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --num-gpus 1 SOLVER.IMS_PER_BATCH 2
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --num-gpus 1 SOLVER.IMS_PER_BATCH 2
 ```
 
 
@@ -41,14 +41,13 @@ However, please note that end-to-end cropping and super-resolution operations ar
 
 You can run following codes to switch the cropping strategy:
 ```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8 GLSAN.CROP UniformlyCrop
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8 GLSAN.CROP SelfAdaptiveCrop
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP UniformlyCrop
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP SelfAdaptiveCrop
 ```
 To add super-resolution operation to the network, run:
 ```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only --num-gpus 8 GLSAN.CROP SelfAdaptiveCrop GLSAN.SR True
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP SelfAdaptiveCrop GLSAN.SR True
 ```
 
 To acquire more parameters of our method, see './glsan/config/defaults.py' and './glsan/modeling/meta_arch/glsan.py'
