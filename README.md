@@ -41,13 +41,13 @@ However, please note that end-to-end cropping and super-resolution operations ar
 
 You can run following codes to switch the cropping strategy:
 ```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP UniformlyCrop
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP SelfAdaptiveCrop
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_final.pth
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_final.pth GLSAN.CROP UniformlyCrop
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_final.pth GLSAN.CROP SelfAdaptiveCrop
 ```
 To add super-resolution operation to the network, run:
 ```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP SelfAdaptiveCrop GLSAN.SR True
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_final.pth GLSAN.CROP SelfAdaptiveCrop GLSAN.SR True
 ```
 
 To acquire more parameters of our method, see './glsan/config/defaults.py' and './glsan/modeling/meta_arch/glsan.py'
