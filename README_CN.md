@@ -9,8 +9,8 @@ GLSAN 是一个用于无人机视觉微小目标检测的网络。这个版本�
 ### dataset augmentation
 对应论文中的网络是使用增强数据集训练的。我们提供了 './tools/crop_dataset.py' 和 './tools/sr_dataset.py' 来对原始数据集进行 SARSA（裁剪） 和 LSRN（超分辨率）操作。其中'./tools/sr_dataset.py'修改了原作者代码中的诸多错误，包括索引计数异常，错误的自身调用，图片索引错误，cfg文件多出一个非法字段等。以下代码请在项目根目录下运行（需按自己需求修改代码）：
 ```python
-python tools/crop_dataset.py
-python tools/sr_dataset.py
+python tools/crop_dataset.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml
+python tools/sr_dataset.py --config-file ./configs/faster_rcnn_res50_visdroneplus.yaml
 ```
 ### pretrained models
 我们网络的预训练模型可以在以下网站下载 [Detectron2.model_zoo](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md)。你也可以通过点击 [R-50.pkl](https://dl.fbaipublicfiles.com/detectron2/ImageNetPretrained/MSRA/R-50.pkl) 或者 [R-101.pkl](https://dl.fbaipublicfiles.com/detectron2/ImageNetPretrained/MSRA/R-101.pkl) 来直接下载到你 'home' 目录下的 '.torch/iopath_cache/detectron2/ImageNetPretrained/MSRA/' 。或者它们将在训练时自动下载到指定位置。
@@ -21,7 +21,7 @@ VisDrone 和 UAVDT 的设置可以在 './glsan/data/datasets' 中找到。
 
 目前代码不支持多 GPU 训练，单 GPU 训练请运行：
 ```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --num-gpus 1 SOLVER.IMS_PER_BATCH 2
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --num-gpus 1 SOLVER.IMS_PER_BATCH 2
 ```
 
 
@@ -31,14 +31,14 @@ python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --nu
 
 你可以运行以下代码来切换裁剪策略：
 ```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP UniformlyCrop
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP SelfAdaptiveCrop
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only MODEL.WEIGHTS glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP UniformlyCrop
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth GLSAN.CROP SelfAdaptiveCrop
 ```
 要在推理时添加超分辨率操作，请运行：  
 ```python
-python train_net.py --config-file ./configs/faster_rcnn_res50_visdrone.yaml --eval-only glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth --num-gpus 8 GLSAN.CROP SelfAdaptiveCrop GLSAN.SR True
+python train_net.py --config-file ./configs/faster_rcnn_res50_visdroneplussr.yaml --eval-only glsan_log/1015_faster_rcnn_res50_visdroneplussr/model_0044999.pth --num-gpus 8 GLSAN.CROP SelfAdaptiveCrop GLSAN.SR True
 ```
 
 要获得我们方法的更多参数，请详见 './glsan/config/defaults.py' 和 './glsan/modeling/meta_arch/glsan.py'。
